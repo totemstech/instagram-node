@@ -7,6 +7,15 @@ relationship:
 media:
 	node test/media.js
 
-test: users relationship media
+tag:
+	node test/tag.js
 
-.PHONY: test
+comments:
+	node test/comments.js
+
+likes:
+	node test/likes.js
+
+test: users relationship media tag comments likes
+
+.PHONY: test users relationship media tag comments likes
