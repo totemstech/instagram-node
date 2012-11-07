@@ -22,7 +22,7 @@ var instagram = require('instagram-node');
 
 instagram.use({ access_token: 'YOUR_ACCESS_TOKEN' });
 instagram.use({ client_id: 'YOUR_CLIENT_ID',
-      client_secret: 'YOUR_CLIENT_SECRET' });
+                client_secret: 'YOUR_CLIENT_SECRET' });
 ```
 
 When it's done, here is the full list of what you can do:
