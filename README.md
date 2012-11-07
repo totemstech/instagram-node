@@ -13,9 +13,9 @@ Almost all instagram actions can be done with this tool. (Geographies are not av
 
 ## How it works
 
-First of all, you need to authentify. You can use `client_id/client_secret` from the app you are building, or an `access_token` from
+* First of all, you need to authentify. You can use `client_id/client_secret` from the app you are building, or an `access_token` from
 a user that use your app.
-** Some features need an access_token to work **
+* **Some features need an access_token to work**
 
 ```javascript
 use({ access_token: 'YOUR_ACCESS_TOKEN' });
@@ -118,8 +118,8 @@ Then just use
 
 ## More infos
 
-You can find more informations on the [Instagram developper](http://instagram.com/developer) website.
-If you have any questions or remark, feel free to contact us at `firstcontact@teleportd.com`
+* You can find more informations on the [Instagram developper](http://instagram.com/developer) website.
+* If you have any questions or remark, feel free to contact us at `firstcontact@teleportd.com`
 
 ## License
 
