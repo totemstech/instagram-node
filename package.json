@@ -1,11 +1,12 @@
 {
-  "name": "instagram",
+  "name": "instagram-node",
   "version": "0.1.0",
   "description": "Simple Instagram driver for Node.js",
   "keywords": ["instagram", "node", "ig"],
   "homepage": "https://github.com/teleportd/instagram-node",
   "author": { "name": "Anthony MOI",
-              "email": "anthony@teleportd.com" },
+              "email": "anthony@teleportd.com",
+              "url": "https://github.com/n1t0" },
   "repository" :    { "type" :  "git",
                       "url" :   "https://github.com/teleportd/instagram-node.git" },
   "dependencies": {
@@ -13,6 +14,6 @@
   },
   "main" : "./lib/instagram",
   "engines" : { 
-    "node" : "v0.8.0" 
+    "node" : ">=v0.6.0" 
   }
 }
