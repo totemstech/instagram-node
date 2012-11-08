@@ -65,7 +65,7 @@ ig.set_user_relationship('user_id', 'follow', function(err, result, limit) {});
 ig.media('media_id', function(err, result, limit) {});
 
 /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
-ig.media_search(48.4335645654, 2.345645645, [options,] function(err, result, pagination, limit) {});
+ig.media_search(48.4335645654, 2.345645645, [options,] function(err, result, limit) {});
 
 ig.media_popular(function(err, result, limit) {});
 
@@ -105,8 +105,9 @@ ig.location('location_id', function(err, result, limit) {});
 /* OPTIONS: { [min_id], [max_id], [min_timestamp], [max_timestamp] }; */
 ig.location_media_recent('location_id', [options,] function(err, result, pagination, limit) {});
 
-/* OPTIONS: { lat, lng, [distance], [foursquare_v2_id], [foursquare_id] }; */
-ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, function(err, result, limit) {});
+/* SPECS: { lat, lng, [foursquare_v2_id], [foursquare_id] }; */
+/* OPTIONS: { [distance] }; */
+ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, limit) {});
 ```
 
 ## Tests
