@@ -58,7 +58,7 @@ instagram.tag_search('test', function(err, result, limit) {
 
 var mcb = mplex.callback();
 var mretry = 0;
-instagram.tag_media_recent({ tag: 'test' }, function(err, medias, limit) {
+instagram.tag_media_recent('test', function(err, medias, limit) {
   if(medias && limit) {
     done++;
     console.log('TAGS: media_recent ' + cfg['CGREEN'] + 'OK' + cfg['CRESET']);

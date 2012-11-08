@@ -58,7 +58,7 @@ instagram.location_search({ lat: 48.858831776042265, lng: 2.3470598999999766, di
 
 var pcb = mplex.callback();
 var pretry = 0;
-instagram.location_media_recent({ location_id: '7351364' }, function(err, medias, limit) {
+instagram.location_media_recent('7351364', function(err, medias, limit) {
   if(medias && limit) {
     done++;
     console.log('LOCATION: media_recent ' + cfg['CGREEN'] + 'OK' + cfg['CRESET']);
