@@ -38,7 +38,7 @@ instagram.media('314584059748370098_2104944', function(err, result, limit) {
 
 var scb = mplex.callback();
 var sretry = 0;
-instagram.media_search({ lat: 48.858831776042265, lng: 2.3470598999999766, distance: 5000 }, function(err, medias, limit) {
+instagram.media_search(48.858831776042265, 2.3470598999999766, { distance: 5000 }, function(err, medias, limit) {
   if(medias && limit) {
     done++;
     console.log('MEDIA: search ' + cfg['CGREEN'] + 'OK' + cfg['CRESET']);

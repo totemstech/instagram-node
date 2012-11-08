@@ -58,7 +58,7 @@ instagram.user_self_feed({ count: 3 }, function(err, feed, pagination, limit) {
 
 var mcb = mplex.callback();
 var mretry = 0;
-instagram.user_media_recent({ user_id: '33082304', count: 3 }, function(err, results, pagination, limit) {
+instagram.user_media_recent('33082304', { count: 3 }, function(err, results, pagination, limit) {
   if(results && pagination && limit) {
     done++;
     console.log('USERS: media_recent ' + cfg['CGREEN'] + 'OK' + cfg['CRESET']);
