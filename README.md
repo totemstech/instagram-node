@@ -1,7 +1,7 @@
 instagram-node
-=========
+==============
 
-NodeJS driver for the instagram API
+NodeJS driver for the Instagram API
 
 ## Installation
 
@@ -18,11 +18,11 @@ a user that use your app.
 * **Some features need an access_token to work**
 
 ```javascript
-var instagram = require('instagram-node');
+var ig = require('instagram-node');
 
-instagram.use({ access_token: 'YOUR_ACCESS_TOKEN' });
-instagram.use({ client_id: 'YOUR_CLIENT_ID',
-                client_secret: 'YOUR_CLIENT_SECRET' });
+ig.use({ access_token: 'YOUR_ACCESS_TOKEN' });
+ig.use({ client_id: 'YOUR_CLIENT_ID',
+         client_secret: 'YOUR_CLIENT_SECRET' });
 ```
 
 When it's done, here is the full list of what you can do:
@@ -32,80 +32,82 @@ When it's done, here is the full list of what you can do:
 /********************************/
 /*            USERS             */
 /********************************/
-instagram.user('USER_ID', function(err, result, limit) {});
+ig.user('user_id', function(err, result, limit) {});
 
 /* OPTIONS: { [count], [min_id], [max_id] }; */
-instagram.user_self_feed({}, function(err, feed, pagination, limit) {});
+ig.user_self_feed([options,] function(err, feed, pagination, limit) {});
 
-/* OPTIONS: { user_id, [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
-instagram.user_media_recent({ user_id: 'USER_ID' }, function(err, results, pagination, limit) {});
+/* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
+ig.user_media_recent('user_id', [options,] function(err, results, pagination, limit) {});
 
 /* OPTIONS: { [count], [max_like_id] }; */
-instagram.user_self_liked({}, function(err, likes, pagination, limit) {});
+ig.user_self_liked([options,] function(err, likes, pagination, limit) {});
 
-instagram.user_search('username', [count], function(err, users, limit) {});
+/* OPTIONS: { [count] }; */
+ig.user_search('username', [options,] function(err, users, limit) {});
 
 /********************************/
 /*         RELATIONSHIP         */
 /********************************/
-instagram.user_follows('USER_ID', function(err, users, limit) {});
+ig.user_follows('user_id', function(err, users, limit) {});
 
-instagram.user_followers('USER_ID', function(err, users, limit) {});
+ig.user_followers('user_id', function(err, users, limit) {});
 
-instagram.user_self_requested_by(function(err, users, limit) {});
+ig.user_self_requested_by(function(err, users, limit) {});
 
-instagram.user_relationship('USER_ID', function(err, result, limit) {});
+ig.user_relationship('user_id', function(err, result, limit) {});
 
-instagram.set_user_relationship('USER_ID', 'follow', function(err, result, limit) {});
+ig.set_user_relationship('user_id', 'follow', function(err, result, limit) {});
 
 /********************************/
 /*           MEDIAS             */
 /********************************/
-instagram.media('media_id', function(err, result, limit) {});
+ig.media('media_id', function(err, result, limit) {});
 
-/* OPTIONS: { lat, lng, [min_timestamp], [max_timestamp], [distance] }; */
-instagram.media_search({ lat: 48.4335645654, lng: 2.345645645 }, function(err, result, pagination, limit) {});
+/* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
+ig.media_search(48.4335645654, 2.345645645, [options,] function(err, result, limit) {});
 
-instagram.media_popular(function(err, result, limit) {});
+ig.media_popular(function(err, result, limit) {});
 
 /********************************/
 /*           COMMENTS           */
 /********************************/
-instagram.comments('media_id', function(err, result, limit) {});
+ig.comments('media_id', function(err, result, limit) {});
 
-instagram.add_comment('media_id', 'your comment', function(err, limit) {});
+ig.add_comment('media_id', 'your comment', function(err, limit) {});
 
-instagram.del_comment('media_id', 'comment_id', function(err, limit) {});
+ig.del_comment('media_id', 'comment_id', function(err, limit) {});
 
 /********************************/
 /*            LIKES             */
 /********************************/
-instagram.likes('media_id', function(err, result, limit) {});
+ig.likes('media_id', function(err, result, limit) {});
 
-instagram.add_like('media_id', function(err, limit) {});
+ig.add_like('media_id', function(err, limit) {});
 
-instagram.del_like('media_id', function(err, limit) {});
+ig.del_like('media_id', function(err, limit) {});
 
 /********************************/
 /*             TAGS             */
 /********************************/
-instagram.tag('tag', function(err, result, limit) {});
+ig.tag('tag', function(err, result, limit) {});
 
-/* OPTIONS: { tag, [min_id], [max_id] }; */
-instagram.tag_media_recent({ tag: 'tag' }, function(err, result, pagination, limit) {});
+/* OPTIONS: { [min_id], [max_id] }; */
+ig.tag_media_recent('tag', [options,] function(err, result, pagination, limit) {});
 
-instagram.tag_search('query', function(err, result, limit) {});
+ig.tag_search('query', function(err, result, limit) {});
 
 /********************************/
 /*           LOCATIONS          */
 /********************************/
-instagram.location('location_id', function(err, result, limit) {});
+ig.location('location_id', function(err, result, limit) {});
 
-/* OPTIONS: { location_id, [min_id], [max_id], [min_timestamp], [max_timestamp] }; */
-instagram.location_media_recent({ location_id: 'location_id' }, function(err, result, pagination, limit) {});
+/* OPTIONS: { [min_id], [max_id], [min_timestamp], [max_timestamp] }; */
+ig.location_media_recent('location_id', [options,] function(err, result, pagination, limit) {});
 
-/* OPTIONS: { lat, lng, [distance], [foursquare_v2_id], [foursquare_id] }; */
-instagram.location_search({ lat: 48.565464564, lng: 2.34656589 }, function(err, result, limit) {});
+/* SPECS: { lat, lng, [foursquare_v2_id], [foursquare_id] }; */
+/* OPTIONS: { [distance] }; */
+ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, limit) {});
 ```
 
 ## Tests

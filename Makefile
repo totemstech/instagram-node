@@ -16,6 +16,9 @@ comments:
 likes:
 	node test/likes.js
 
-test: users relationship media tag comments likes
+locations:
+	node test/locations.js
 
-.PHONY: test users relationship media tag comments likes
+test: users relationship media tag comments likes locations
+
+.PHONY: test users relationship media tag comments likes locations
