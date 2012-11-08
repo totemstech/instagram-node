@@ -42,7 +42,19 @@ instagram.user_self_feed({ count: 3 }, function(err, feed, pagination, limit) {
   if(feed && pagination && limit) {
     done++;
     console.log('USERS: self_feed ' + cfg['CGREEN'] + 'OK' + cfg['CRESET']);
-    fcb();
+    if(pagination.next) {
+      pagination.next(function(err, feed, pagination, limit) {
+        if(feed && pagination && limit) {
+          done++;
+          console.log('USERS: self_feed (next) ' + cfg['CGREEN'] + 'OK' + cfg['CRESET']);
+          fcb();
+        } else {
+          error++;
+          console.log('USERS: self_feed (next) ' + cfg['CRED'] + 'FAIL '  + cfg['CRESET']);
+          fcb();
+        }
+      });
+    }
   } else {
     if(fretry < 2) {
       fretry++;
@@ -117,7 +129,7 @@ instagram.user_search('xn1t0x', function(err, users, limit) {
 });
 
 mplex.go(function() {
-  if(error === 0 && done === 5) {
+  if(error === 0 && done === 6) {
     console.log('USERS: ' + cfg['CGREEN'] + 'OK !' + cfg['CRESET']);
   } else {
     console.log('USERS: ' + cfg['CRED'] + error + ' failed ' + cfg['CRESET'] + '& ' + cfg['CGREEN'] + done + ' passed' + cfg['CRESET']);
