@@ -37,7 +37,7 @@ ig.user('user_id', function(err, result, limit) {});
 /* OPTIONS: { [count], [min_id], [max_id] }; */
 ig.user_self_feed([options,] function(err, feed, pagination, limit) {});
 
-/* OPTIONS: { user_id, [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
+/* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
 ig.user_media_recent('user_id', [options,] function(err, results, pagination, limit) {});
 
 /* OPTIONS: { [count], [max_like_id] }; */
