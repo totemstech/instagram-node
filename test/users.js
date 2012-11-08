@@ -54,6 +54,9 @@ instagram.user_self_feed({ count: 3 }, function(err, feed, pagination, limit) {
           fcb();
         }
       });
+    } else {
+      done++;
+      fcb();
     }
   } else {
     if(fretry < 2) {
