@@ -19,7 +19,7 @@ a user that use your app.
 * **Some features need an access_token to work**
 
 ```javascript
-var ig = require('instagram-node');
+var ig = require('instagram-node').instagram();
 
 ig.use({ access_token: 'YOUR_ACCESS_TOKEN' });
 ig.use({ client_id: 'YOUR_CLIENT_ID',
@@ -110,6 +110,21 @@ ig.location_media_recent('location_id', [options,] function(err, result, paginat
 /* OPTIONS: { [distance] }; */
 ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, limit) {});
 ```
+
+## Errors
+
+When errors occur, you receive an error object with default properties, but we also add two things:
+
+    err.statusCode; // Available when the error comes from Instagram API
+
+and
+
+    err.retry(); // Lets you retry in the same conditions that before
+
+## Pagination
+
+When you use functions like `user_media_recent` or `tag_media_recent`, you will get a `pagination` object in your callback. This object 
+is basically the same that Instagram would give you but there will be a `next()` function that let you retrieve next results without caring about anything.
 
 ## Tests
 
