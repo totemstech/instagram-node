@@ -126,6 +126,17 @@ and
 When you use functions like `user_media_recent` or `tag_media_recent`, you will get a `pagination` object in your callback. This object 
 is basically the same that Instagram would give you but there will be a `next()` function that let you retrieve next results without caring about anything.
 
+    var ig = require('instagram-node').instagram();
+
+    var hdl = function(err, result, pagination, limit) {
+      // Your implementation here
+      if(pagination.next) {
+        pagination.next(hdl); // Will get second page results
+      }
+    };
+  
+    ig.tag_media_recent('test', hdl);
+
 ## Tests
 
 Put the following in your environment:
