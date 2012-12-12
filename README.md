@@ -36,13 +36,13 @@ When it's done, here is the full list of what you can do:
 ig.user('user_id', function(err, result, limit) {});
 
 /* OPTIONS: { [count], [min_id], [max_id] }; */
-ig.user_self_feed([options,] function(err, feed, pagination, limit) {});
+ig.user_self_feed([options,] function(err, medias, pagination, limit) {});
 
 /* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
-ig.user_media_recent('user_id', [options,] function(err, results, pagination, limit) {});
+ig.user_media_recent('user_id', [options,] function(err, medias, pagination, limit) {});
 
 /* OPTIONS: { [count], [max_like_id] }; */
-ig.user_self_liked([options,] function(err, likes, pagination, limit) {});
+ig.user_self_liked([options,] function(err, medias, pagination, limit) {});
 
 /* OPTIONS: { [count] }; */
 ig.user_search('username', [options,] function(err, users, limit) {});
@@ -50,9 +50,11 @@ ig.user_search('username', [options,] function(err, users, limit) {});
 /********************************/
 /*         RELATIONSHIP         */
 /********************************/
-ig.user_follows('user_id', function(err, users, limit) {});
+/* OPTIONS: { [count], [cursor] }; */
+ig.user_follows('user_id', function(err, users, pagination, limit) {});
 
-ig.user_followers('user_id', function(err, users, limit) {});
+/* OPTIONS: { [count], [cursor] }; */
+ig.user_followers('user_id', function(err, users, pagination, limit) {});
 
 ig.user_self_requested_by(function(err, users, limit) {});
 
@@ -68,7 +70,7 @@ ig.media('media_id', function(err, result, limit) {});
 /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
 ig.media_search(48.4335645654, 2.345645645, [options,] function(err, result, limit) {});
 
-ig.media_popular(function(err, result, limit) {});
+ig.media_popular(function(err, medias, limit) {});
 
 /********************************/
 /*           COMMENTS           */
@@ -94,7 +96,7 @@ ig.del_like('media_id', function(err, limit) {});
 ig.tag('tag', function(err, result, limit) {});
 
 /* OPTIONS: { [min_id], [max_id] }; */
-ig.tag_media_recent('tag', [options,] function(err, result, pagination, limit) {});
+ig.tag_media_recent('tag', [options,] function(err, medias, pagination, limit) {});
 
 ig.tag_search('query', function(err, result, limit) {});
 
