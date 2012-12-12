@@ -1,6 +1,6 @@
 {
   "name": "instagram-node",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple Instagram driver for Node.js",
   "keywords": ["instagram", "node", "ig", "driver"],
   "homepage": "https://github.com/teleportd/instagram-node",
