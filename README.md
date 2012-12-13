@@ -95,7 +95,7 @@ ig.del_like('media_id', function(err, limit) {});
 /********************************/
 ig.tag('tag', function(err, result, limit) {});
 
-/* OPTIONS: { [min_id], [max_id] }; */
+/* OPTIONS: { [min_tag_id], [max_tag_id] }; */
 ig.tag_media_recent('tag', [options,] function(err, medias, pagination, limit) {});
 
 ig.tag_search('query', function(err, result, limit) {});
@@ -115,9 +115,16 @@ ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(e
 
 ## Errors
 
-When errors occur, you receive an error object with default properties, but we also add two things:
+When errors occur, you receive an error object with default properties, but we also add some other things:
 
-    err.statusCode; // Available when the error comes from Instagram API
+    // Available when the error comes from Instagram API
+    err.code;                // code from Instagram
+    err.error_type;          // error type from Instagram
+    err.error_message;       // error message from Instagram
+    
+    // If the error occurs while requesting the API
+    err.status_code;         // the response status code
+    err.body;                // the received body
 
 and
 
