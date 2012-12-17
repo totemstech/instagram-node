@@ -65,10 +65,10 @@ ig.set_user_relationship('user_id', 'follow', function(err, result, limit) {});
 /********************************/
 /*           MEDIAS             */
 /********************************/
-ig.media('media_id', function(err, result, limit) {});
+ig.media('media_id', function(err, media, limit) {});
 
 /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
-ig.media_search(48.4335645654, 2.345645645, [options,] function(err, result, limit) {});
+ig.media_search(48.4335645654, 2.345645645, [options,] function(err, medias, limit) {});
 
 ig.media_popular(function(err, medias, limit) {});
 
