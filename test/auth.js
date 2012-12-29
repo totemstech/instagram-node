@@ -73,7 +73,7 @@ if (exp_permissions_url === instagram.get_authorization_url(redirect_uri,
 }
 
 mplex.go(function() {
-  if(error === 0 && done === 6) {
+  if(error === 0 && done === 4) {
     console.log('AUTH: ' + cfg['CGREEN'] + 'OK !' + cfg['CRESET']);
   } else {
     console.log('AUTH: ' + cfg['CRED'] + error + ' failed ' + cfg['CRESET'] + '& ' + cfg['CGREEN'] + done + ' passed' + cfg['CRESET']);
