@@ -19,6 +19,9 @@ likes:
 locations:
 	node test/locations.js
 
-test: users relationship media tag comments likes locations
+auth:
+	node test/auth.js
+
+test: users relationship media tag comments likes locations auth
 
 .PHONY: test users relationship media tag comments likes locations
