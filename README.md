@@ -96,21 +96,6 @@ Once you've setup the API and/or authenticated, here is the full list of what yo
 
 ```javascript
 /********************************/
-/*       AUTHENTICATION         */
-/********************************/
-// Without permissions
-ig.get_authorization_url('http://mysite.com/redirect-uri');
-// With permissions
-ig.get_authorization_url('http://mysite.com/redirect-uri',
-                         ['likes', 'comments', 'relationships']);
-// Note that you can use any combination of 'likes', 'comments', and/or
-// 'relationships' within the array depending on what permissions your app
-// needs.
-
-// Once you send the user to redirect url, you can invoke this function to set
-// an access_token/rm authorization.
-
-/********************************/
 /*            USERS             */
 /********************************/
 ig.user('user_id', function(err, result, limit) {});
