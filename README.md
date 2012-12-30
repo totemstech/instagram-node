@@ -30,15 +30,15 @@ ig.use({ client_id: 'YOUR_CLIENT_ID',
 
 Instagram uses the standard oauth authentication flow in order to allow apps to act on
 a user's behalf. Therefore, the API provides two convenience methods to help
-you authenticate your users. The first ```get_authorization_url```, can be used
+you authenticate your users. The first, ```get_authorization_url```, can be used
 to redirect an unauthenticated user to the instagram login screen based on a
 ```redirect_uri``` string and a ```permissions``` array you supply it. The
-second function, ```authorize_user```, can be used to retrieve set an access_token
+second method, ```authorize_user```, can be used to retrieve and set an access token
 for a user, allowing your app to act fully on his/her behalf. This method takes
-three parameters, a ```response_code``` which is sent as a GET parameter once a
+three parameters: a ```response_code``` which is sent as a GET parameter once a
 user has authorized your app and instagram has redirected them back to your
-authorization redirect URI. The second parameter is the same ```redirect_uri```
-supplied to ```get_authorization_url```, and the third is a callback that takes
+authorization redirect URI, a ```redirect_uri``` which is the same one 
+supplied to ```get_authorization_url```, and a callback that takes
 two parameters ```err``` and ```result```. ```err``` will be populated if and
 only if the request to authenticate the user has failed for some reason.
 Otherwise, it will be ```null``` and ```response``` will be populated with a
