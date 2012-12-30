@@ -26,9 +26,88 @@ ig.use({ client_id: 'YOUR_CLIENT_ID',
          client_secret: 'YOUR_CLIENT_SECRET' });
 ```
 
-When it's done, here is the full list of what you can do:
+###Server-Side Authentication using OAuth and the Instagram API
+
+Instagram uses the standard oauth authentication flow in order to allow apps to act on
+a user's behalf. Therefore, the API provides two convenience methods to help
+you authenticate your users. The first ```get_authorization_url```, can be used
+to redirect an unauthenticated user to the instagram login screen based on a
+```redirect_uri``` string and a ```permissions``` array you supply it. The
+second function, ```authorize_user```, can be used to retrieve set an access_token
+for a user, allowing your app to act fully on his/her behalf. This method takes
+three parameters, a ```response_code``` which is sent as a GET parameter once a
+user has authorized your app and instagram has redirected them back to your
+authorization redirect URI. The second parameter is the same ```redirect_uri```
+supplied to ```get_authorization_url```, and the third is a callback that takes
+two parameters ```err``` and ```result```. ```err``` will be populated if and
+only if the request to authenticate the user has failed for some reason.
+Otherwise, it will be ```null``` and ```response``` will be populated with a
+JSON object representing Instagram's confirmation reponse that the user is
+indeed authorized. See [instagram's authentication
+documentation](http://instagram.com/developer/authentication/) for more information.
+
+Below is an example of how one might authenticate a user within an ExpressJS app.
+```javascript
+var express = require('express');
+var api = require('../../instagram-node').instagram();
+var app = express();
+
+app.configure({
+  // The usual...
+});
+
+api.use({
+  client_id: YOUR_CLIENT_ID,
+  client_secret: YOUR_CLIENT_SECRET
+});
+
+var redirect_uri = 'http://yoursite.com/handleauth';
+
+exports.authorize_user = function(req, res) {
+  res.redirect(api.get_authorization_url(redirect_uri, ['likes']));
+};
+
+exports.handleauth = function(req, res) {
+  api.authorize_user(req.query.code, redirect_uri, function(err, result) {
+    if (err) {
+      res.send(err.body);
+    } else {
+      res.send('You made it!! Your access token is: ' +
+                 result.access_token);
+    }
+  });
+};
+
+// This is where you would initially send users to authorize
+app.get('/authorize_user', exports.authorize_user);
+// This is your redirect URI
+app.get('/handleauth', exports.handleauth);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
+});
+
+```
+
+###Using the API
+
+Once you've setup the API and/or authenticated, here is the full list of what you can do:
 
 ```javascript
+/********************************/
+/*       AUTHENTICATION         */
+/********************************/
+// Without permissions
+ig.get_authorization_url('http://mysite.com/redirect-uri');
+// With permissions
+ig.get_authorization_url('http://mysite.com/redirect-uri',
+                         ['likes', 'comments', 'relationships']);
+// Note that you can use any combination of 'likes', 'comments', and/or
+// 'relationships' within the array depending on what permissions your app
+// needs.
+
+// Once you send the user to redirect url, you can invoke this function to set
+// an access_token/rm authorization.
 
 /********************************/
 /*            USERS             */
@@ -121,7 +200,7 @@ When errors occur, you receive an error object with default properties, but we a
     err.code;                // code from Instagram
     err.error_type;          // error type from Instagram
     err.error_message;       // error message from Instagram
-    
+
     // If the error occurs while requesting the API
     err.status_code;         // the response status code
     err.body;                // the received body
@@ -132,7 +211,7 @@ and
 
 ## Pagination
 
-When you use functions like `user_media_recent` or `tag_media_recent`, you will get a `pagination` object in your callback. This object 
+When you use functions like `user_media_recent` or `tag_media_recent`, you will get a `pagination` object in your callback. This object
 is basically the same that Instagram would give you but there will be a `next()` function that let you retrieve next results without caring about anything.
 
 ```javascript
@@ -144,7 +223,7 @@ var hdl = function(err, result, pagination, limit) {
     pagination.next(hdl); // Will get second page results
   }
 };
-  
+
 ig.tag_media_recent('test', hdl);
 ```
 
