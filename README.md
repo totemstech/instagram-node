@@ -70,10 +70,11 @@ exports.authorize_user = function(req, res) {
 exports.handleauth = function(req, res) {
   api.authorize_user(req.query.code, redirect_uri, function(err, result) {
     if (err) {
-      res.send(err.body);
+      console.log(err.body);
+      res.send("Didn't work");
     } else {
-      res.send('You made it!! Your access token is: ' +
-                 result.access_token);
+      console.log('Yay! Access token is ' + result.access_token);
+      res.send('You made it!!');
     }
   });
 };
