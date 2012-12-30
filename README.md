@@ -49,10 +49,10 @@ documentation](http://instagram.com/developer/authentication/) for more informat
 Below is an example of how one might authenticate a user within an ExpressJS app.
 ```javascript
 var express = require('express');
-var api = require('../../instagram-node').instagram();
+var api = require('instagram-node').instagram();
 var app = express();
 
-app.configure({
+app.configure(function() {
   // The usual...
 });
 
