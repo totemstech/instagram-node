@@ -10,7 +10,8 @@
   "repository" :    { "type" :  "git",
                       "url" :   "https://github.com/teleportd/instagram-node.git" },
   "dependencies": {
-    "fwk": "0.1.x"
+    "fwk": "1.0.x",
+    "colors": "0.6.0-1"
   },
   "main" : "./lib/instagram",
   "engines" : { 
