@@ -39,20 +39,20 @@ var auth = (function(spec, my) {
         }
         return cb_(null, res);
       },
-      'with valid permissions': function(cb_) {
+      'with valid scope': function(cb_) {
         var res = {
           ok: true,
-          description: 'Get authorization url with valid permissions'
+          description: 'Get authorization url with valid scope'
         };
 
         var redirect_uri = 'https://www.foo.com/handleauth';
         var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
           'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
           'com%2Fhandleauth&response_type=code' +
-          '&permissions=likes%20comments';
-        var permissions = [ 'likes', 'comments' ];
+          '&scope=likes%20comments';
+        var options = { scope: [ 'likes', 'comments' ] };
         
-        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, permissions)) {
+        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
           res.ok = false;
         }
         return cb_(null, res);
@@ -67,10 +67,10 @@ var auth = (function(spec, my) {
         var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
           'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
           'com%2Fhandleauth&response_type=code' +
-          '&permissions=likes%20comments';
-        var permissions = [ 'likes', 'comments', 'badpermission' ];
+          '&scope=likes%20comments';
+        var options = { scope: [ 'likes', 'comments', 'badpermission' ] };
         
-        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, permissions)) {
+        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
           res.ok = false;
         }
         return cb_(null, res);
@@ -85,12 +85,10 @@ var auth = (function(spec, my) {
         var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
           'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
           'com%2Fhandleauth&response_type=code' +
-          '&state=mystate' +
-          '&permissions=';
-        var permissions = [];
-        var state = 'mystate';
+          '&state=mystate';
+        var options = { state: 'mystate' };
 
-        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, permissions, state)) {
+        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
           res.ok = false;
         }
         return cb_(null, res);
