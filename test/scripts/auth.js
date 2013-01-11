@@ -49,7 +49,7 @@ var auth = (function(spec, my) {
         var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
           'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
           'com%2Fhandleauth&response_type=code' +
-          '&scope=likes%20comments';
+          '&scope=likes%2Bcomments';
         var options = { scope: [ 'likes', 'comments' ] };
         
         if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
@@ -67,9 +67,9 @@ var auth = (function(spec, my) {
         var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
           'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
           'com%2Fhandleauth&response_type=code' +
-          '&scope=likes%20comments';
+          '&scope=likes%2Bcomments';
         var options = { scope: [ 'likes', 'comments', 'badpermission' ] };
-        
+
         if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
           res.ok = false;
         }
