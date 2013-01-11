@@ -57,7 +57,7 @@ var auth = (function(spec, my) {
         }
         return cb_(null, res);
       },
-      'with valid/invalid permissions': function(cb_) {
+      'with valid/invalid scope': function(cb_) {
         var res = {
           ok: true,
           description: 'Get authorization url with valid/invalid permissions'
