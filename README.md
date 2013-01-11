@@ -32,7 +32,8 @@ Instagram uses the standard oauth authentication flow in order to allow apps to 
 a user's behalf. Therefore, the API provides two convenience methods to help
 you authenticate your users. The first, ```get_authorization_url```, can be used
 to redirect an unauthenticated user to the instagram login screen based on a
-```redirect_uri``` string and a ```permissions``` array you supply it. The
+```redirect_uri``` string and an optional ```options``` object containing
+an optional ```scope``` array and an optional ```state``` string. The
 second method, ```authorize_user```, can be used to retrieve and set an access token
 for a user, allowing your app to act fully on his/her behalf. This method takes
 three parameters: a ```response_code``` which is sent as a GET parameter once a
@@ -64,7 +65,7 @@ api.use({
 var redirect_uri = 'http://yoursite.com/handleauth';
 
 exports.authorize_user = function(req, res) {
-  res.redirect(api.get_authorization_url(redirect_uri, ['likes']));
+  res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
 };
 
 exports.handleauth = function(req, res) {
