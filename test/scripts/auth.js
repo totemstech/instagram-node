@@ -74,6 +74,26 @@ var auth = (function(spec, my) {
           res.ok = false;
         }
         return cb_(null, res);
+      },
+      'with state': function(cb_) {
+        var res = {
+          ok: true,
+          description: 'Get authorization url with state'
+        };
+
+        var redirect_uri = 'https://www.foo.com/handleauth';
+        var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
+          'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
+          'com%2Fhandleauth&response_type=code' +
+          '&state=mystate' +
+          '&permissions=';
+        var permissions = [];
+        var state = 'mystate';
+
+        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, permissions, state)) {
+          res.ok = false;
+        }
+        return cb_(null, res);
       }
     };
 
