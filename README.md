@@ -177,6 +177,12 @@ ig.location_media_recent('location_id', [options,] function(err, result, paginat
 /* SPECS: { lat, lng, [foursquare_v2_id], [foursquare_id] }; */
 /* OPTIONS: { [distance] }; */
 ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, limit) {});
+
+/********************************/
+/*         SUBSCRIPTIONS        */
+/********************************/
+ig.subscribe_tag('funny', 'http://MYHOST/tag/funny', options, function(err, result, limit){});
+
 ```
 
 ## Errors
