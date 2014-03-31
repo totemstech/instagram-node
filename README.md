@@ -182,9 +182,9 @@ ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(e
 /*         SUBSCRIPTIONS        */
 /********************************/
 ig.subscribe_tag('funny', 'http://MYHOST/tag/funny', options, function(err, result, limit){});
-ig.subscribe_geography(lat, long, radius, callback_url, options, function(err, result, limit){});
-
-
+ig.subscribe_geography(lat, long, radius, 'http://MYHOST/geography', options, function(err, result, limit){});
+ig.subscribe_user('http://MYHOST/user', options, function(err, result, limit){});
+ig.subscribe_location(1257285, 'http://MYHOST/location/1257285', options, function(err, result, limit){});
 ```
 
 ## Subscriptions
