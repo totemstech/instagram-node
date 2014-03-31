@@ -181,6 +181,8 @@ ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(e
 /********************************/
 /*         SUBSCRIPTIONS        */
 /********************************/
+ig.subscriptions({}, function(err, result, limit){});
+ig.subscription_delete({id:1}, function(err,subscriptions,limit){})
 ig.subscribe_tag('funny', 'http://MYHOST/tag/funny', options, function(err, result, limit){});
 ig.subscribe_geography(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', options, function(err, result, limit){});
 ig.subscribe_user('http://MYHOST/user', options, function(err, result, limit){});
@@ -190,6 +192,27 @@ ig.subscribe_location(1257285, 'http://MYHOST/location/1257285', options, functi
 ## Subscriptions
 
 Subscriptions are callbacks from Instagram to your app when new things happen. They should be web-accessable, and return `req.query['hub.challenge']` on GET. Read more [here](http://instagram.com/developer/realtime/). After you subscribe, Instagram will calllback your web URL whenever a new post, user action, etc happens.
+
+You can get your subscriptions with this:
+
+```javascript
+ig.subscriptions({}, function(err,subscriptions,limit){
+  console.log(subscriptions);
+});
+```
+
+You can delete all your subscriptions with this:
+
+```javascript
+ig.subscription_delete({object:'all'}, function(err,subscriptions,limit){});
+```
+
+or just one with this:
+
+```javascript
+ig.subscription_delete({id:1}, function(err,subscriptions,limit){});
+```
+
 
 
 ## Errors
