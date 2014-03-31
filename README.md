@@ -185,6 +185,11 @@ ig.subscribe_tag('funny', 'http://MYHOST/tag/funny', options, function(err, resu
 
 ```
 
+## Subscriptions
+
+Subscriptions are callbacks from Instagram to your app when new things happen. They should be web-accessable, and return `req.query['hub.challenge']` on GET. Read more [here](http://instagram.com/developer/realtime/). After you subscribe, Instagram will calllback your web URL whenever a new post, user action, etc happens.
+
+
 ## Errors
 
 When errors occur, you receive an error object with default properties, but we also add some other things:
