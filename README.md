@@ -8,10 +8,6 @@ In production at http://nitrogr.am aggregating more than 200 data points per sec
 
 `npm install instagram-node`
 
-## Features
-
-Almost all instagram actions can be done with this tool. (Geographies are not available at this time, but they will be soon !)
-
 ## How it works
 
 * First of all, you need to authentify. You can use `client_id/client_secret` from the app you are building, or an `access_token` from
@@ -179,14 +175,25 @@ ig.location_media_recent('location_id', [options,] function(err, result, paginat
 ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, limit) {});
 
 /********************************/
+/*          GEOGRAPHIES         */
+/********************************/
+/* OPTIONS: { [min_id], [count] } */
+ig.geography_media_recent(geography_id, [options,] function(err, result, pagination, limit) {});
+
+/********************************/
 /*         SUBSCRIPTIONS        */
 /********************************/
-ig.subscriptions({}, function(err, result, limit){});
-ig.subscription_delete({id:1}, function(err,subscriptions,limit){})
-ig.subscribe_tag('funny', 'http://MYHOST/tag/funny', options, function(err, result, limit){});
-ig.subscribe_geography(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', options, function(err, result, limit){});
-ig.subscribe_user('http://MYHOST/user', options, function(err, result, limit){});
-ig.subscribe_location(1257285, 'http://MYHOST/location/1257285', options, function(err, result, limit){});
+ig.subscriptions(function(err, result, limit){});
+
+ig.del_subscription({id:1}, function(err,subscriptions,limit){})
+
+ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', function(err, result, limit){});
+
+ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', function(err, result, limit){});
+
+ig.add_user_subscription('http://MYHOST/user', function(err, result, limit){});
+
+ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', function(err, result, limit){});
 ```
 
 ## Subscriptions
@@ -196,7 +203,7 @@ Subscriptions are callbacks from Instagram to your app when new things happen. T
 You can get your subscriptions with this:
 
 ```javascript
-ig.subscriptions({}, function(err,subscriptions,limit){
+ig.subscriptions(function(err, subscriptions, limit){
   console.log(subscriptions);
 });
 ```
@@ -204,13 +211,13 @@ ig.subscriptions({}, function(err,subscriptions,limit){
 You can delete all your subscriptions with this:
 
 ```javascript
-ig.subscription_delete({object:'all'}, function(err,subscriptions,limit){});
+ig.del_subscription({ all: true }, function(err, subscriptions, limit){});
 ```
 
 or just one with this:
 
 ```javascript
-ig.subscription_delete({id:1}, function(err,subscriptions,limit){});
+ig.del_subscription({ id: 1 }, function(err, subscriptions, limit){});
 ```
 
 
