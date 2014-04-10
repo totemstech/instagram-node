@@ -139,7 +139,7 @@ ig.media_popular(function(err, medias, limit) {});
 /********************************/
 ig.comments('media_id', function(err, result, limit) {});
 
-ig.add_comment('media_id', 'your comment', function(err, limit) {});
+ig.add_comment('media_id', 'your comment', function(err, result, limit) {});
 
 ig.del_comment('media_id', 'comment_id', function(err, limit) {});
 
