@@ -103,6 +103,9 @@ ig.user_self_feed([options,] function(err, medias, pagination, limit) {});
 /* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
 ig.user_media_recent('user_id', [options,] function(err, medias, pagination, limit) {});
 
+/* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
+ig.user_self_media_recent([options,] function(err, medias, pagination, limit) {});
+
 /* OPTIONS: { [count], [max_like_id] }; */
 ig.user_self_liked([options,] function(err, medias, pagination, limit) {});
 
