@@ -1,3 +1,6 @@
+## v0.4.0
+ - Add support for new Instagram API security with `sign_request`
+
 ## v0.3.0
  - The `access_token` received after an `authorize_user` call is not
    automatically set anymore. ([#23](https://github.com/teleportd/instagram-node/issues/23))
