@@ -34,8 +34,9 @@ app.post('/like/:media_id', function(req, res, next) {
   // You can also specify the IP on your own:
   // ig.sign_request('XXX.XXX.XXX.XXX', 'YOUR_CLIENT_SECRET');
 
-  ig.add_like(req.param('media_id'), function(err, result) {
-    // handle error/result here
+  ig.add_like(req.param('media_id'), function(err) {
+    // handle err here
+    return res.send('OK');
   });
 });
 ```
