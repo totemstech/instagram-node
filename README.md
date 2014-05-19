@@ -23,18 +23,21 @@ ig.use({ client_id: 'YOUR_CLIENT_ID',
 ```
 
 * If you activated "Signed Requests", you need to sign requests that need the
-write access (relationship, likes, comments, ...) with the `sign_request` method:
+write access (relationship, likes, comments, ...) with:
 ```javascript
 app.post('/like/:media_id', function(req, res, next) {
   var ig = require('instagram-node').instagram({});
   ig.use({ access_token: 'YOUR_ACCESS_TOKEN' });
 
-  // Use the client_secret used to generate the access_token
-  ig.sign_request(req, 'YOUR_CLIENT_SECRET');
-  // You can also specify the IP on your own:
-  // ig.sign_request('XXX.XXX.XXX.XXX', 'YOUR_CLIENT_SECRET');
-
-  ig.add_like(req.param('media_id'), function(err) {
+  ig.add_like(req.param('media_id'), {
+    sign_request: {
+      client_secret: 'YOUR_CLIENT_SECRET',
+      // Then you can specify the request:
+      client_req: req
+      // or the IP on your own:
+      ip: 'XXX.XXX.XXX.XXX'
+    }
+  }, function(err) {
     // handle err here
     return res.send('OK');
   });
