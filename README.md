@@ -22,7 +22,29 @@ ig.use({ client_id: 'YOUR_CLIENT_ID',
          client_secret: 'YOUR_CLIENT_SECRET' });
 ```
 
-###Server-Side Authentication using OAuth and the Instagram API
+* If you activated "Signed Requests", you need to sign requests that need the
+write access (relationship, likes, comments, ...) with:
+```javascript
+app.post('/like/:media_id', function(req, res, next) {
+  var ig = require('instagram-node').instagram({});
+  ig.use({ access_token: 'YOUR_ACCESS_TOKEN' });
+
+  ig.add_like(req.param('media_id'), {
+    sign_request: {
+      client_secret: 'YOUR_CLIENT_SECRET',
+      // Then you can specify the request:
+      client_req: req
+      // or the IP on your own:
+      ip: 'XXX.XXX.XXX.XXX'
+    }
+  }, function(err) {
+    // handle err here
+    return res.send('OK');
+  });
+});
+```
+
+### Server-Side Authentication using OAuth and the Instagram API
 
 Instagram uses the standard oauth authentication flow in order to allow apps to act on
 a user's behalf. Therefore, the API provides two convenience methods to help
