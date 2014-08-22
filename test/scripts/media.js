@@ -24,13 +24,13 @@ var medias = (function(spec, my) {
     var tests = {
       'media': function(cb_) {
         var retry = 0;
-        instagram.media('314584059748370098_2104944', function(err, result, limit) {
+        instagram.media('314584059748370098_2104944', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves a media'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -45,13 +45,13 @@ var medias = (function(spec, my) {
       },
       'media search': function(cb_) {
         var retry = 0;
-        instagram.media_search(48.858831776042265, 2.3470598999999766, { distance: 5000 }, function(err, result, limit) {
+        instagram.media_search(48.858831776042265, 2.3470598999999766, { distance: 5000 }, function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Search medias'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -66,13 +66,13 @@ var medias = (function(spec, my) {
       },
       'media popular': function(cb_) {
         var retry = 0;
-        instagram.media_popular(function(err, result, limit) {
+        instagram.media_popular(function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves popular medias'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {

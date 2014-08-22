@@ -24,13 +24,13 @@ var users = (function(spec, my) {
     var tests = {
       'user': function(cb_) {
         var retry = 0;
-        instagram.user('33082304', function(err, result, limit) {
+        instagram.user('33082304', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves informations about a user'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -45,13 +45,13 @@ var users = (function(spec, my) {
       },
       'user feed': function(cb_) {
         var retry = 0;
-        instagram.user_self_feed({ count: 3 }, function(err, result, pagination, limit) {
+        instagram.user_self_feed({ count: 3 }, function(err, result, pagination, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves the feed'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -66,13 +66,13 @@ var users = (function(spec, my) {
       },
       'user media recent': function(cb_) {
         var retry = 0;
-        instagram.user_media_recent('33082304', { count: 3 }, function(err, result, pagination, limit) {
+        instagram.user_media_recent('33082304', { count: 3 }, function(err, result, pagination, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves recent medias'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -87,13 +87,13 @@ var users = (function(spec, my) {
       },
       'user self liked': function(cb_) {
         var retry = 0;
-        instagram.user_self_liked({ count: 3 }, function(err, result, limit) {
+        instagram.user_self_liked({ count: 3 }, function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves liked medias'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -108,13 +108,13 @@ var users = (function(spec, my) {
       },
       'user search': function(cb_) {
         var retry = 0;
-        instagram.user_search('xn1t0x', function(err, result, limit) {
+        instagram.user_search('xn1t0x', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Search a user'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {

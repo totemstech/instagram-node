@@ -1,3 +1,8 @@
+## v0.4.4
+ - Renamed the `limit` variable/property to `remaining` since it was using the `x-ratelimit-remaining` value.
+ - Assigned the `limit` variable/property to the `x-ratelimit-limit` API call response header value ([#30](https://github.com/teleportd/instagram-node/issues/30)).
+ - Adjusted the necessary functions to account for the new/renamed variables.
+
 ## v0.4.0
  - Add support for new Instagram API security with `sign_request`
 

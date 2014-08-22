@@ -24,13 +24,13 @@ var locations = (function(spec, my) {
     var tests = {
       'location': function(cb_) {
         var retry = 0;
-        instagram.location('7351364', function(err, result, limit) {
+        instagram.location('7351364', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves a location'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -45,13 +45,13 @@ var locations = (function(spec, my) {
       },
       'location search': function(cb_) {
         var retry = 0;
-        instagram.location_search({ lat: 48.858831776042265, lng: 2.3470598999999766, distance: 5000 }, function(err, result, limit) {
+        instagram.location_search({ lat: 48.858831776042265, lng: 2.3470598999999766, distance: 5000 }, function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Search a location'
           };
           
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -66,13 +66,13 @@ var locations = (function(spec, my) {
       },
       'location media recent': function(cb_) {
         var retry = 0;
-        instagram.location_media_recent('7351364', function(err, result, limit) {
+        instagram.location_media_recent('7351364', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves location recent medias'
           };
           
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {

@@ -24,13 +24,13 @@ var tags = (function(spec, my) {
     var tests = {
       'tag info': function(cb_) {
         var retry = 0;
-        instagram.tag('test', function(err, result, limit) {
+        instagram.tag('test', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves informations about a tag'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -45,13 +45,13 @@ var tags = (function(spec, my) {
       },
       'tag search': function(cb_) {
         var retry = 0;
-        instagram.tag_search('test', function(err, result, limit) {
+        instagram.tag_search('test', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Search a tag'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -66,13 +66,13 @@ var tags = (function(spec, my) {
       },
       'tag media recent': function(cb_) {
         var retry = 0;
-        instagram.tag_media_recent('test', function(err, result, limit) {
+        instagram.tag_media_recent('test', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves recent medias'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {

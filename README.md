@@ -117,108 +117,108 @@ Once you've setup the API and/or authenticated, here is the full list of what yo
 /********************************/
 /*            USERS             */
 /********************************/
-ig.user('user_id', function(err, result, limit) {});
+ig.user('user_id', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [count], [min_id], [max_id] }; */
-ig.user_self_feed([options,] function(err, medias, pagination, limit) {});
+ig.user_self_feed([options,] function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
-ig.user_media_recent('user_id', [options,] function(err, medias, pagination, limit) {});
+ig.user_media_recent('user_id', [options,] function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
-ig.user_self_media_recent([options,] function(err, medias, pagination, limit) {});
+ig.user_self_media_recent([options,] function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [max_like_id] }; */
-ig.user_self_liked([options,] function(err, medias, pagination, limit) {});
+ig.user_self_liked([options,] function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count] }; */
-ig.user_search('username', [options,] function(err, users, limit) {});
+ig.user_search('username', [options,] function(err, users, remaining, limit) {});
 
 /********************************/
 /*         RELATIONSHIP         */
 /********************************/
 /* OPTIONS: { [count], [cursor] }; */
-ig.user_follows('user_id', function(err, users, pagination, limit) {});
+ig.user_follows('user_id', function(err, users, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [cursor] }; */
-ig.user_followers('user_id', function(err, users, pagination, limit) {});
+ig.user_followers('user_id', function(err, users, pagination, remaining, limit) {});
 
-ig.user_self_requested_by(function(err, users, limit) {});
+ig.user_self_requested_by(function(err, users, remaining, limit) {});
 
-ig.user_relationship('user_id', function(err, result, limit) {});
+ig.user_relationship('user_id', function(err, result, remaining, limit) {});
 
-ig.set_user_relationship('user_id', 'follow', function(err, result, limit) {});
+ig.set_user_relationship('user_id', 'follow', function(err, result, remaining, limit) {});
 
 /********************************/
 /*           MEDIAS             */
 /********************************/
-ig.media('media_id', function(err, media, limit) {});
+ig.media('media_id', function(err, media, remaining, limit) {});
 
 /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
-ig.media_search(48.4335645654, 2.345645645, [options,] function(err, medias, limit) {});
+ig.media_search(48.4335645654, 2.345645645, [options,] function(err, medias, remaining, limit) {});
 
-ig.media_popular(function(err, medias, limit) {});
+ig.media_popular(function(err, medias, remaining, limit) {});
 
 /********************************/
 /*           COMMENTS           */
 /********************************/
-ig.comments('media_id', function(err, result, limit) {});
+ig.comments('media_id', function(err, result, remaining, limit) {});
 
-ig.add_comment('media_id', 'your comment', function(err, result, limit) {});
+ig.add_comment('media_id', 'your comment', function(err, result, remaining, limit) {});
 
-ig.del_comment('media_id', 'comment_id', function(err, limit) {});
+ig.del_comment('media_id', 'comment_id', function(err, remaining, limit) {});
 
 /********************************/
 /*            LIKES             */
 /********************************/
-ig.likes('media_id', function(err, result, limit) {});
+ig.likes('media_id', function(err, result, remaining, limit) {});
 
-ig.add_like('media_id', function(err, limit) {});
+ig.add_like('media_id', function(err, remaining, limit) {});
 
-ig.del_like('media_id', function(err, limit) {});
+ig.del_like('media_id', function(err, remaining, limit) {});
 
 /********************************/
 /*             TAGS             */
 /********************************/
-ig.tag('tag', function(err, result, limit) {});
+ig.tag('tag', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [min_tag_id], [max_tag_id] }; */
-ig.tag_media_recent('tag', [options,] function(err, medias, pagination, limit) {});
+ig.tag_media_recent('tag', [options,] function(err, medias, pagination, remaining, limit) {});
 
-ig.tag_search('query', function(err, result, limit) {});
+ig.tag_search('query', function(err, result, remaining, limit) {});
 
 /********************************/
 /*           LOCATIONS          */
 /********************************/
-ig.location('location_id', function(err, result, limit) {});
+ig.location('location_id', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [min_id], [max_id], [min_timestamp], [max_timestamp] }; */
-ig.location_media_recent('location_id', [options,] function(err, result, pagination, limit) {});
+ig.location_media_recent('location_id', [options,] function(err, result, pagination, remaining, limit) {});
 
 /* SPECS: { lat, lng, [foursquare_v2_id], [foursquare_id] }; */
 /* OPTIONS: { [distance] }; */
-ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, limit) {});
+ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, remaining, limit) {});
 
 /********************************/
 /*          GEOGRAPHIES         */
 /********************************/
 /* OPTIONS: { [min_id], [count] } */
-ig.geography_media_recent(geography_id, [options,] function(err, result, pagination, limit) {});
+ig.geography_media_recent(geography_id, [options,] function(err, result, pagination, remaining, limit) {});
 
 /********************************/
 /*         SUBSCRIPTIONS        */
 /********************************/
-ig.subscriptions(function(err, result, limit){});
+ig.subscriptions(function(err, result, remaining, limit){});
 
 ig.del_subscription({id:1}, function(err,subscriptions,limit){})
 
-ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', function(err, result, limit){});
+ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', function(err, result, remaining, limit){});
 
-ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', function(err, result, limit){});
+ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', function(err, result, remaining, limit){});
 
-ig.add_user_subscription('http://MYHOST/user', function(err, result, limit){});
+ig.add_user_subscription('http://MYHOST/user', function(err, result, remaining, limit){});
 
-ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', function(err, result, limit){});
+ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', function(err, result, remaining, limit){});
 ```
 
 ## Subscriptions
@@ -228,7 +228,7 @@ Subscriptions are callbacks from Instagram to your app when new things happen. T
 You can get your subscriptions with this:
 
 ```javascript
-ig.subscriptions(function(err, subscriptions, limit){
+ig.subscriptions(function(err, subscriptions, remaining, limit){
   console.log(subscriptions);
 });
 ```
@@ -236,13 +236,13 @@ ig.subscriptions(function(err, subscriptions, limit){
 You can delete all your subscriptions with this:
 
 ```javascript
-ig.del_subscription({ all: true }, function(err, subscriptions, limit){});
+ig.del_subscription({ all: true }, function(err, subscriptions, remaining, limit){});
 ```
 
 or just one with this:
 
 ```javascript
-ig.del_subscription({ id: 1 }, function(err, subscriptions, limit){});
+ig.del_subscription({ id: 1 }, function(err, subscriptions, remaining, limit){});
 ```
 
 
@@ -272,7 +272,7 @@ is basically the same that Instagram would give you but there will be a `next()`
 ```javascript
 var ig = require('instagram-node').instagram();
 
-var hdl = function(err, result, pagination, limit) {
+var hdl = function(err, result, pagination, remaining, limit) {
   // Your implementation here
   if(pagination.next) {
     pagination.next(hdl); // Will get second page results

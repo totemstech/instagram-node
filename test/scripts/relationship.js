@@ -24,13 +24,13 @@ var relationships = (function(spec, my) {
     var tests = {
       'follows': function(cb_) {
         var retry = 0;
-        instagram.user_follows('33082304', function(err, result, limit) {
+        instagram.user_follows('33082304', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves follows'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -45,13 +45,13 @@ var relationships = (function(spec, my) {
       },
       'followers': function(cb_) {
         var retry = 0;
-        instagram.user_followers('33082304', function(err, result, limit) {
+        instagram.user_followers('33082304', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves followers'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -66,13 +66,13 @@ var relationships = (function(spec, my) {
       },
       'request': function(cb_) {
         var retry = 0;
-        instagram.user_self_requested_by(function(err, result, limit) {
+        instagram.user_self_requested_by(function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves requested-by'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -87,13 +87,13 @@ var relationships = (function(spec, my) {
       },
       'relationship': function(cb_) {
         var retry = 0;
-        instagram.user_relationship('33082302', function(err, result, limit) {
+        instagram.user_relationship('33082302', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves relationship'
           };
           
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {

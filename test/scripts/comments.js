@@ -24,13 +24,13 @@ var comments = (function(spec, my) {
     var tests = {
       'comments': function(cb_) {
         var retry = 0;
-        instagram.comments('318869204166248215_33082304', function(err, result, limit) {
+        instagram.comments('318869204166248215_33082304', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves comments'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {

@@ -24,13 +24,13 @@ var likes = (function(spec, my) {
     var tests = {
       'likes': function(cb_) {
         var retry = 0;
-        instagram.likes('318869204166248215_33082304', function(err, result, limit) {
+        instagram.likes('318869204166248215_33082304', function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieves likes'
           };
 
-          if(result && limit) {
+          if(result && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -45,13 +45,13 @@ var likes = (function(spec, my) {
       },
       'add like': function(cb_) {
         var retry = 0;
-        instagram.add_like('318869204166248215_33082304', function(err, limit) {
+        instagram.add_like('318869204166248215_33082304', function(err, remaining, limit) {
           var res = {
             ok: true,
             description: 'Add a like'
           };
-          
-          if(!err && limit) {
+
+          if(!err && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
@@ -66,13 +66,13 @@ var likes = (function(spec, my) {
       },
       'del like': function(cb_) {
         var retry = 0;
-        instagram.del_like('318869204166248215_33082304', function(err, limit) {
+        instagram.del_like('318869204166248215_33082304', function(err, remaining, limit) {
           var res = {
             ok: true,
             description: 'Delete a like'
           };
           
-          if(!err && limit) {
+          if(!err && remaining) {
             return cb_(null, res);
           } else {
             if(retry < 2) {
