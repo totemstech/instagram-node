@@ -1,5 +1,5 @@
 ## v0.5.1
- - Add `verify_token` parameter support in `add_<tag|geography|user|location>_subscription` ([#29](https://github.com/teleportd/instagram-node/issues/29)
+ - Add `verify_token` parameter support in `add_<tag|geography|user|location>_subscription` ([#29](https://github.com/teleportd/instagram-node/issues/29)).
 
 ## v0.5.0
  - Renamed the `limit` variable/property to `remaining` since it was using the `x-ratelimit-remaining` value.
@@ -7,7 +7,7 @@
  - Adjusted the necessary functions to account for the new/renamed variables.
 
 ## v0.4.0
- - Add support for new Instagram API security with `sign_request`
+ - Add support for new Instagram API security with `sign_request`.
 
 ## v0.3.0
  - The `access_token` received after an `authorize_user` call is not
