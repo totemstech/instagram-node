@@ -212,13 +212,17 @@ ig.subscriptions(function(err, result, remaining, limit){});
 
 ig.del_subscription({id:1}, function(err,subscriptions,limit){})
 
-ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', function(err, result, remaining, limit){});
+/* OPTIONS: { [verify_token] }
+ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', [options,] function(err, result, remaining, limit){});
 
-ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', function(err, result, remaining, limit){});
+/* OPTIONS: { [verify_token] }
+ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', [options,] function(err, result, remaining, limit){});
 
-ig.add_user_subscription('http://MYHOST/user', function(err, result, remaining, limit){});
+/* OPTIONS: { [verify_token] }
+ig.add_user_subscription('http://MYHOST/user', [options,] function(err, result, remaining, limit){});
 
-ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', function(err, result, remaining, limit){});
+/* OPTIONS: { [verify_token] }
+ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', [options,] function(err, result, remaining, limit){});
 ```
 
 ## Subscriptions

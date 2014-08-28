@@ -1,3 +1,6 @@
+## v0.5.1
+ - Add `verify_token` parameter support in `add_<tag|geography|user|location>_subscription` ([#29](https://github.com/teleportd/instagram-node/issues/29)
+
 ## v0.5.0
  - Renamed the `limit` variable/property to `remaining` since it was using the `x-ratelimit-remaining` value.
  - Assigned the `limit` variable/property to the `x-ratelimit-limit` API call response header value ([#30](https://github.com/teleportd/instagram-node/issues/30)).
