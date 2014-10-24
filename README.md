@@ -2,7 +2,7 @@ instagram-node
 ==============
 
 NodeJS driver for the Instagram API.
-In production at http://nitrogr.am aggregating more than 200 data points per seconds
+In production at http://totems.co aggregating more than 200 data points per seconds
 
 ## Installation
 
@@ -301,7 +301,7 @@ Then just use
 ## More infos
 
 * You can find more informations on the [Instagram developper](http://instagram.com/developer) website.
-* If you have any questions or remark, feel free to contact us at `boom@nitrogr.am`
+* If you have any questions or remark, feel free to contact us at `hello@totems.co`
 
 ## License
 
