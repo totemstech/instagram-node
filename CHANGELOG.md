@@ -1,3 +1,6 @@
+## v0.5.2
+ - Fix the retry of `add_<tag|geography|user|location>_subscription` methods
+
 ## v0.5.1
  - Add `verify_token` parameter support in `add_<tag|geography|user|location>_subscription` ([#29](https://github.com/teleportd/instagram-node/issues/29)).
 
