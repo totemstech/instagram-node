@@ -84,6 +84,70 @@ var tags = (function(spec, my) {
             }
           }
         });
+      },
+
+      'tag info (cyrillic symbols)': function(cb_) {
+        var retry = 0;
+        instagram.tag('тест', function(err, result, remaining, limit) {
+          var res = {
+            ok: true,
+            description: 'Retrieves informations about a tag (with cyrillic symbols)'
+          };
+
+          if(result && remaining) {
+            return cb_(null, res);
+          } else {
+            if(retry < 2) {
+              that.retry(res.description, ++retry);
+              err.retry();
+            } else {
+              res.ok = false;
+              return cb_(null, res);
+            }
+          }
+        });
+      },
+      'tag search (cyrillic symbols)': function(cb_) {
+        var retry = 0;
+        instagram.tag_search('тест', function(err, result, remaining, limit) {
+          var res = {
+            ok: true,
+            description: 'Search a tag (with cyrillic symbols)'
+          };
+
+          if(result && remaining) {
+            return cb_(null, res);
+          } else {
+            if(retry < 2) {
+              that.retry(res.description, ++retry);
+              err.retry();
+            } else {
+              res.ok = false;
+              return cb_(null, res);
+            }
+          }
+        });
+      },
+      'tag media recent (cyrillic symbols)': function(cb_) {
+        var retry = 0;
+        instagram.tag_media_recent('тест', function(err, result, remaining, limit) {
+          var res = {
+            ok: true,
+            description: 'Retrieves recent medias (with cyrillic symbols)'
+          };
+
+          if(result && remaining) {
+            return cb_(null, res);
+          } else {
+            if(retry < 2) {
+              that.retry(res.description, ++retry);
+              err.retry();
+            } else {
+              res.ok = false;
+              return cb_(null, res);
+            }
+          }
+        });
       }
     };
 

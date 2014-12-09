@@ -1,3 +1,6 @@
+## v0.5.4
+ - Fix a bug that prevented the use of non-latin characters for tags methods ([#40](https://github.com/teleportd/instagram-node/issues/29)).
+
 ## v0.5.2
  - Fix the retry of `add_<tag|geography|user|location>_subscription` methods
 
