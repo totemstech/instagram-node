@@ -1,3 +1,6 @@
+## v0.5.5
+ - Add a `port` option
+
 ## v0.5.4
  - Fix a bug that prevented the use of non-latin characters for tags methods ([#40](https://github.com/teleportd/instagram-node/issues/29)).
 
