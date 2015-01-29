@@ -24,7 +24,7 @@ var oembed = (function(spec, my) {
     var tests = {
       'oembed retrieve': function(cb_) {
         var retry = 0;
-        instagram.oembed({url: 'http://instagram.com/p/RdoIkdTUay/', omitscript: true, hidecaption: true, maxwidth: 640}, function(err, result, remaining, limit) {
+        instagram.oembed('http://instagram.com/p/RdoIkdTUay/', {omitscript: true, hidecaption: true, maxwidth: 640}, function(err, result, remaining, limit) {
           var res = {
             ok: true,
             description: 'Retrieve oEmbed data'
