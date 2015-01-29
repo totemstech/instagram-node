@@ -1,3 +1,6 @@
+## v0.5.6
+ - Add the optional parameters to `oembed` method
+
 ## v0.5.5
  - Add a `port` option
 
