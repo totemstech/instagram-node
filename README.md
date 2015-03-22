@@ -196,7 +196,7 @@ ig.tag_search('query', function(err, result, remaining, limit) {});
 ig.location('location_id', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [min_id], [max_id], [min_timestamp], [max_timestamp] }; */
-ig.location_media_recent('location_id', [options,] function(err, result, pagination, remaining, limit) {});
+ig.location_media_recent('location_id', [options], function(err, result, pagination, remaining, limit) {});
 
 /* SPECS: { lat, lng, [foursquare_v2_id], [foursquare_id] }; */
 /* OPTIONS: { [distance] }; */
