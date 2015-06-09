@@ -301,7 +301,7 @@ Then just use
 
 ## More infos
 
-* You can find more informations on the [Instagram developper](http://instagram.com/developer) website.
+* You can find more informations on the [Instagram developer](http://instagram.com/developer) website.
 * If you have any questions or remark, feel free to contact us at `hello@totems.co`
 
 ## License
