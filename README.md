@@ -258,18 +258,22 @@ ig.del_subscription({ id: 1 }, function(err, subscriptions, remaining, limit){})
 
 When errors occur, you receive an error object with default properties, but we also add some other things:
 
-    // Available when the error comes from Instagram API
-    err.code;                // code from Instagram
-    err.error_type;          // error type from Instagram
-    err.error_message;       // error message from Instagram
+```javascript
+// Available when the error comes from Instagram API
+err.code;                // code from Instagram
+err.error_type;          // error type from Instagram
+err.error_message;       // error message from Instagram
 
-    // If the error occurs while requesting the API
-    err.status_code;         // the response status code
-    err.body;                // the received body
+// If the error occurs while requesting the API
+err.status_code;         // the response status code
+err.body;                // the received body
+```
 
 and
 
-    err.retry(); // Lets you retry in the same conditions that before
+```javascript
+err.retry(); // Lets you retry in the same conditions that before
+```
 
 ## Pagination
 
