@@ -58,7 +58,7 @@ second method, ```authorize_user```, can be used to retrieve and set an access t
 for a user, allowing your app to act fully on his/her behalf. This method takes
 three parameters: a ```response_code``` which is sent as a GET parameter once a
 user has authorized your app and instagram has redirected them back to your
-authorization redirect URI, a ```redirect_uri``` which is the same one 
+authorization redirect URI, a ```redirect_uri``` which is the same one
 supplied to ```get_authorization_url```, and a callback that takes
 two parameters ```err``` and ```result```. ```err``` will be populated if and
 only if the request to authenticate the user has failed for some reason.
@@ -123,19 +123,19 @@ Once you've setup the API and/or authenticated, here is the full list of what yo
 ig.user('user_id', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [count], [min_id], [max_id] }; */
-ig.user_self_feed([options,] function(err, medias, pagination, remaining, limit) {});
+ig.user_self_feed([options], function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
-ig.user_media_recent('user_id', [options,] function(err, medias, pagination, remaining, limit) {});
+ig.user_media_recent('user_id', [options], function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [min_timestamp], [max_timestamp], [min_id], [max_id] }; */
-ig.user_self_media_recent([options,] function(err, medias, pagination, remaining, limit) {});
+ig.user_self_media_recent([options], function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count], [max_like_id] }; */
-ig.user_self_liked([options,] function(err, medias, pagination, remaining, limit) {});
+ig.user_self_liked([options], function(err, medias, pagination, remaining, limit) {});
 
 /* OPTIONS: { [count] }; */
-ig.user_search('username', [options,] function(err, users, remaining, limit) {});
+ig.user_search('username', [options], function(err, users, remaining, limit) {});
 
 /********************************/
 /*         RELATIONSHIP         */
@@ -158,7 +158,7 @@ ig.set_user_relationship('user_id', 'follow', function(err, result, remaining, l
 ig.media('media_id', function(err, media, remaining, limit) {});
 
 /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
-ig.media_search(48.4335645654, 2.345645645, [options,] function(err, medias, remaining, limit) {});
+ig.media_search(48.4335645654, 2.345645645, [options], function(err, medias, remaining, limit) {});
 
 ig.media_popular(function(err, medias, remaining, limit) {});
 
@@ -186,7 +186,7 @@ ig.del_like('media_id', function(err, remaining, limit) {});
 ig.tag('tag', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [min_tag_id], [max_tag_id] }; */
-ig.tag_media_recent('tag', [options,] function(err, medias, pagination, remaining, limit) {});
+ig.tag_media_recent('tag', [options], function(err, medias, pagination, remaining, limit) {});
 
 ig.tag_search('query', function(err, result, remaining, limit) {});
 
@@ -196,36 +196,36 @@ ig.tag_search('query', function(err, result, remaining, limit) {});
 ig.location('location_id', function(err, result, remaining, limit) {});
 
 /* OPTIONS: { [min_id], [max_id], [min_timestamp], [max_timestamp] }; */
-ig.location_media_recent('location_id', [options,] function(err, result, pagination, remaining, limit) {});
+ig.location_media_recent('location_id', [options], function(err, result, pagination, remaining, limit) {});
 
 /* SPECS: { lat, lng, [foursquare_v2_id], [foursquare_id] }; */
 /* OPTIONS: { [distance] }; */
-ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options,] function(err, result, remaining, limit) {});
+ig.location_search({ lat: 48.565464564, lng: 2.34656589 }, [options], function(err, result, remaining, limit) {});
 
 /********************************/
 /*          GEOGRAPHIES         */
 /********************************/
 /* OPTIONS: { [min_id], [count] } */
-ig.geography_media_recent(geography_id, [options,] function(err, result, pagination, remaining, limit) {});
+ig.geography_media_recent(geography_id, [options], function(err, result, pagination, remaining, limit) {});
 
 /********************************/
 /*         SUBSCRIPTIONS        */
 /********************************/
 ig.subscriptions(function(err, result, remaining, limit){});
 
-ig.del_subscription({id:1}, function(err,subscriptions,limit){})
+ig.del_subscription({id:1}, function(err,subscriptions,limit){});
 
 /* OPTIONS: { [verify_token] } */
-ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', [options,] function(err, result, remaining, limit){});
+ig.add_tag_subscription('funny', 'http://MYHOST/tag/funny', [options], function(err, result, remaining, limit){});
 
 /* OPTIONS: { [verify_token] } */
-ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', [options,] function(err, result, remaining, limit){});
+ig.add_geography_subscription(48.565464564, 2.34656589, 100, 'http://MYHOST/geography', [options], function(err, result, remaining, limit){});
 
 /* OPTIONS: { [verify_token] } */
-ig.add_user_subscription('http://MYHOST/user', [options,] function(err, result, remaining, limit){});
+ig.add_user_subscription('http://MYHOST/user', [options], function(err, result, remaining, limit){});
 
 /* OPTIONS: { [verify_token] } */
-ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', [options,] function(err, result, remaining, limit){});
+ig.add_location_subscription(1257285, 'http://MYHOST/location/1257285', [options], function(err, result, remaining, limit){});
 ```
 
 ## Subscriptions
@@ -307,4 +307,3 @@ Then just use
 ## License
 
 Distributed under the MIT License.
-
