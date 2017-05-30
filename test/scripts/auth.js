@@ -28,7 +28,7 @@ var auth = (function(spec, my) {
           ok: true,
           description: 'Get authorization url'
         };
-        
+
         var redirect_uri = 'https://www.foo.com/handleauth';
         var expected_url = 'https://api.instagram.com/oauth/authorize?' +
           'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
@@ -39,10 +39,10 @@ var auth = (function(spec, my) {
         }
         return cb_(null, res);
       },
-      'with scope': function(cb_) {
+      'with scope as an array of options': function(cb_) {
         var res = {
           ok: true,
-          description: 'Get authorization url with valid scope'
+          description: 'Get authorization url with valid scope as an array'
         };
 
         var redirect_uri = 'https://www.foo.com/handleauth';
@@ -51,7 +51,26 @@ var auth = (function(spec, my) {
           'com%2Fhandleauth&response_type=code' +
           '&scope=likes+comments';
         var options = { scope: [ 'likes', 'comments' ] };
-        
+
+        if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
+          res.ok = false;
+        }
+        return cb_(null, res);
+      },
+
+      'with scope as a string': function(cb_) {
+        var res = {
+          ok: true,
+          description: 'Get authorization url with valid scope as a string'
+        };
+
+        var redirect_uri = 'https://www.foo.com/handleauth';
+        var exp_permissions_url = 'https://api.instagram.com/oauth/authorize?' +
+          'client_id=1234&redirect_uri=https%3A%2F%2Fwww.foo.' +
+          'com%2Fhandleauth&response_type=code' +
+          '&scope=likes';
+        var options = { scope: 'likes'  };
+
         if(exp_permissions_url !== instagram.get_authorization_url(redirect_uri, options)) {
           res.ok = false;
         }
