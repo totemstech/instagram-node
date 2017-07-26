@@ -1,3 +1,6 @@
+## v0.5.8
+ - Add the forced signed requests
+
 ## v0.5.6
  - Add the optional parameters to `oembed` method
 
